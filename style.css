@@ -9,4 +9,6 @@ body {
 
 li {
   list-style-type: none;
+  text-align: center;
+  list-style-position: outside;
 }
