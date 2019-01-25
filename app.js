@@ -9,6 +9,8 @@ const completed = document.getElementById('completed');
 
 form.addEventListener('submit', addTask);
 
+const number = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+
 function addTask(e){
   e.preventDefault();
 
@@ -17,8 +19,8 @@ function addTask(e){
 
     input.placeholder = '';
     tasks.push(task)
-    console.log(task);
     redrawList();
+
   } else {
     input.placeholder = 'Give med a task';
   }
@@ -37,7 +39,7 @@ function redrawList(){
 
   list.innerHTML = '';
 
-  antallCompleted = 0;
+  totalCompleted = 0;
 
   for(let task of tasks){
     const listElement = document.createElement('li');
@@ -51,7 +53,7 @@ function redrawList(){
 
     if (task.checked) {
       checkbox.setAttribute('checked', true);
-      antallCompleted++;
+      totalCompleted++;
       span.style.textDecoration = 'line-through';
     }
 
@@ -60,7 +62,20 @@ function redrawList(){
     list.appendChild(listElement);
 
   }
-  completed.innerText = antallCompleted + '/' + tasks.length + ' completed';
+
+  let total = "";
+  if (tasks.length < 10) {
+    total = number[tasks.length]
+  }
+  let done = "";
+  if (totalCompleted < 10){
+    done = number[totalCompleted]
+  }
+  let task = "tasks";
+  if (tasks.length === 1){
+    task = "task"
+  }
+  completed.innerText = 'You have completed ' + done + ' of your ' + total + " " +task;
 }
 
 redrawList();
