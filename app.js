@@ -50,6 +50,7 @@ function redrawList(){
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('id', tasks.indexOf(task));
     checkbox.addEventListener('click', todoWasChecked);
+    listElement.setAttribute("class", 'card');
 
     if (task.checked) {
       checkbox.setAttribute('checked', true);
@@ -75,7 +76,12 @@ function redrawList(){
   if (tasks.length === 1){
     task = "task"
   }
-  completed.innerText = 'You have completed ' + done + ' of your ' + total + " " +task;
+  if (tasks.length === totalCompleted && tasks.length !== 0){
+    completed.innerText = 'You have completed all of your tasks'
+  }else {
+    completed.innerText = 'You have completed ' + done + ' of your ' + total + " " +task;
+  }
+
 }
 
 redrawList();
