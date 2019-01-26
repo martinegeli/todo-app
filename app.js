@@ -64,13 +64,12 @@ function redrawList(){
 
   }
 
-  let total = "";
+  let total = tasks.length;
   if (tasks.length < 10) {
     total = number[tasks.length]
   }
-  let done = "";
   if (totalCompleted < 10){
-    done = number[totalCompleted]
+    totalCompleted = number[totalCompleted]
   }
   let task = "tasks";
   if (tasks.length === 1){
@@ -79,7 +78,7 @@ function redrawList(){
   if (tasks.length === totalCompleted && tasks.length !== 0){
     completed.innerText = 'You have completed all of your tasks'
   }else {
-    completed.innerText = 'You have completed ' + done + ' of your ' + total + " " +task;
+    completed.innerText = 'You have completed ' + totalCompleted + ' of your ' + total + " " +task;
   }
 
 }
